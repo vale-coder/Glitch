@@ -10,6 +10,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            flex-direction: column;
         }
         .text {
             font-family: Arial, sans-serif;
@@ -22,6 +23,12 @@
         }
         .visible {
             opacity: 1;
+        }
+        .button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
         }
     </style>
     <script>
@@ -83,7 +90,7 @@
 <p id="text1" class="text">Se vuoi salvare Glitch</p>
 <p id="text2" class="text" style="display:none;">Dovrai bere una pozione</p>
 <p id="text3" class="text" style="display:none;">Indizio: è negli sportelli</p>
-<button onclick="start()">Inizia</button>
+<button class="button" onclick="start()">Inizia</button>
 
 </body>
 </html>
