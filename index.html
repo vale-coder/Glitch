@@ -48,14 +48,12 @@
                                         text3.classList.add('visible');
                                         setTimeout(() => {
                                             text3.classList.remove('visible');
-                                            setTimeout(() => {
-                                                window.close();
-                                            }, 2000); // 2 second delay before closing
-                                        }, 2000); // 2 second delay for text3
-                                    }, 20); // Small delay to trigger the transition
-                                }, 2000); // 2 second delay for text2
-                            }, 20); // Small delay to trigger the transition
-                        }, 2000); // 2 second delay for text1
+                                            // window.close(); // Non può essere usato per chiudere la finestra
+                                        }, 2000); // 2 second delay before closing
+                                    }, 2000); // 2 second delay for text3
+                                }, 20); // Small delay to trigger the transition
+                            }, 2000); // 2 second delay for text2
+                        }, 20); // Small delay to trigger the transition
                     }, 2000); // 2 second delay for text1
                 }, 2000); // 2 second delay for text1
             }, 2000); // Initial 2 second delay
@@ -74,10 +72,10 @@
             }
         }
 
-        window.onload = function() {
+        function start() {
             makeFullScreen();
             toggleText();
-        };
+        }
     </script>
 </head>
 <body>
@@ -85,6 +83,7 @@
 <p id="text1" class="text">Se vuoi salvare Glitch</p>
 <p id="text2" class="text" style="display:none;">Dovrai bere una pozione</p>
 <p id="text3" class="text" style="display:none;">Indizio: è negli sportelli</p>
+<button onclick="start()">Inizia</button>
 
 </body>
 </html>
