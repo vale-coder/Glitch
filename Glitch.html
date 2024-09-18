@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Il Mio Sito</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .text {
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 2s;
+            position: absolute;
+        }
+        .visible {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        function toggleText() {
+            const text1 = document.getElementById('text1');
+            const text2 = document.getElementById('text2');
+            const text3 = document.getElementById('text3');
+            
+            setTimeout(() => {
+                text1.classList.add('visible');
+                setTimeout(() => {
+                    text1.classList.remove('visible');
+                    setTimeout(() => {
+                        text1.style.display = 'none';
+                        text2.style.display = 'block';
+                        setTimeout(() => {
+                            text2.classList.add('visible');
+                            setTimeout(() => {
+                                text2.classList.remove('visible');
+                                setTimeout(() => {
+                                    text2.style.display = 'none';
+                                    text3.style.display = 'block';
+                                    setTimeout(() => {
+                                        text3.classList.add('visible');
+                                        setTimeout(() => {
+                                            text3.classList.remove('visible');
+                                            setTimeout(() => {
+                                                window.close();
+                                            }, 2000); // 2 second delay before closing
+                                        }, 2000); // 2 second delay for text3
+                                    }, 20); // Small delay to trigger the transition
+                                }, 2000); // 2 second delay for text2
+                            }, 20); // Small delay to trigger the transition
+                        }, 2000); // 2 second delay for text1
+                    }, 2000); // 2 second delay for text1
+                }, 2000); // 2 second delay for text1
+            }, 2000); // Initial 2 second delay
+        }
+
+        function makeFullScreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
+        window.onload = function() {
+            makeFullScreen();
+            toggleText();
+        };
+    </script>
+</head>
+<body>
+
+<p id="text1" class="text">Se vuoi salvare Glitch</p>
+<p id="text2" class="text" style="display:none;">Dovrai bere una pozione</p>
+<p id="text3" class="text" style="display:none;">Indizio: è negli sportelli</p>
+
+</body>
+</html>
