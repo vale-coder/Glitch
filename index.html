@@ -34,50 +34,32 @@
     </style>
     <script>
         function toggleText() {
-            const text1 = document.getElementById('text1');
-            const text2 = document.getElementById('text2');
-            const text3 = document.getElementById('text3');
-            const text4 = document.getElementById('text4');
-            
-            setTimeout(() => {
-                text1.classList.add('visible');
-                setTimeout(() => {
-                    text1.classList.remove('visible');
+            const texts = document.querySelectorAll('.text');
+            let currentIndex = 0;
+
+            function showNextText() {
+                if (currentIndex > 0) {
+                    texts[currentIndex - 1].classList.remove('visible');
+                    texts[currentIndex - 1].style.display = 'none';
+                }
+                if (currentIndex < texts.length) {
+                    texts[currentIndex].style.display = 'block';
                     setTimeout(() => {
-                        text1.style.display = 'none';
-                        text2.style.display = 'block';
+                        texts[currentIndex].classList.add('visible');
                         setTimeout(() => {
-                            text2.classList.add('visible');
-                            setTimeout(() => {
-                                text2.classList.remove('visible');
-                                setTimeout(() => {
-                                    text2.style.display = 'none';
-                                    text3.style.display = 'block';
-                                    setTimeout(() => {
-                                        text3.classList.add('visible');
-                                        setTimeout(() => {
-                                            text3.classList.remove('visible');
-                                            setTimeout(() => {
-                                                text3.style.display = 'none';
-                                                text4.style.display = 'block';
-                                                setTimeout(() => {
-                                                    text4.classList.add('visible');
-                                                    setTimeout(() => {
-                                                        text4.classList.remove('visible');
-                                                        setTimeout(() => {
-                                                            window.close();
-                                                        }, 2000); // 2 second delay before closing
-                                                    }, 2000); // 2 second delay for text4
-                                                }, 20); // Small delay to trigger the transition
-                                            }, 2000); // 2 second delay for text3
-                                        }, 20); // Small delay to trigger the transition
-                                    }, 2000); // 2 second delay for text2
-                                }, 20); // Small delay to trigger the transition
-                            }, 2000); // 2 second delay for text1
-                        }, 20); // Small delay to trigger the transition
-                    }, 2000); // 2 second delay for text1
-                }, 2000); // 2 second delay for text1
-            }, 2000); // Initial 2 second delay
+                            texts[currentIndex].classList.remove('visible');
+                            currentIndex++;
+                            setTimeout(showNextText, 2000); // Delay before showing the next text
+                        }, 2000); // Duration the text is visible
+                    }, 20); // Small delay to trigger the transition
+                } else {
+                    setTimeout(() => {
+                        window.close();
+                    }, 2000); // 2 second delay before closing
+                }
+            }
+
+            showNextText();
         }
 
         function makeFullScreen() {
