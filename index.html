@@ -20,6 +20,7 @@
             opacity: 0;
             transition: opacity 2s;
             position: absolute;
+            cursor: default; /* Rimuove il cursore di testo */
         }
         .visible {
             opacity: 1;
@@ -36,6 +37,7 @@
             const text1 = document.getElementById('text1');
             const text2 = document.getElementById('text2');
             const text3 = document.getElementById('text3');
+            const text4 = document.getElementById('text4');
             
             setTimeout(() => {
                 text1.classList.add('visible');
@@ -55,11 +57,23 @@
                                         text3.classList.add('visible');
                                         setTimeout(() => {
                                             text3.classList.remove('visible');
-                                            // window.close(); // Non può essere usato per chiudere la finestra
-                                        }, 2000); // 2 second delay before closing
-                                    }, 2000); // 2 second delay for text3
+                                            setTimeout(() => {
+                                                text3.style.display = 'none';
+                                                text4.style.display = 'block';
+                                                setTimeout(() => {
+                                                    text4.classList.add('visible');
+                                                    setTimeout(() => {
+                                                        text4.classList.remove('visible');
+                                                        setTimeout(() => {
+                                                            window.close();
+                                                        }, 2000); // 2 second delay before closing
+                                                    }, 2000); // 2 second delay for text4
+                                                }, 20); // Small delay to trigger the transition
+                                            }, 2000); // 2 second delay for text3
+                                        }, 20); // Small delay to trigger the transition
+                                    }, 2000); // 2 second delay for text2
                                 }, 20); // Small delay to trigger the transition
-                            }, 2000); // 2 second delay for text2
+                            }, 2000); // 2 second delay for text1
                         }, 20); // Small delay to trigger the transition
                     }, 2000); // 2 second delay for text1
                 }, 2000); // 2 second delay for text1
@@ -81,16 +95,18 @@
 
         function start() {
             makeFullScreen();
+            document.getElementById('startButton').style.display = 'none';
             toggleText();
         }
     </script>
 </head>
 <body>
 
-<p id="text1" class="text">Se vuoi salvare Glitch</p>
-<p id="text2" class="text" style="display:none;">Dovrai bere una pozione</p>
-<p id="text3" class="text" style="display:none;">Indizio: è negli sportelli</p>
-<button class="button" onclick="start()">Inizia</button>
+<p id="text1" class="text">Ciao Alessandro</p>
+<p id="text2" class="text" style="display:none;">Se vuoi salvare Glitch</p>
+<p id="text3" class="text" style="display:none;">Dovrai bere una pozione</p>
+<p id="text4" class="text" style="display:none;">Indizio: è negli sportelli</p>
+<button id="startButton" class="button" onclick="start()">Inizia</button>
 
 </body>
 </html>
