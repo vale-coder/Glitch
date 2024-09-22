@@ -31,6 +31,13 @@
             margin-top: 20px;
             cursor: pointer;
         }
+        #whiteImage {
+            position: absolute;
+            top: 0; /* Imposta la posizione verticale */
+            left: 0; /* Imposta la posizione orizzontale */
+            width: 100%; /* Imposta la larghezza dell'immagine */
+            height: 100%; /* Imposta l'altezza dell'immagine */
+        }
     </style>
     <script>
         function toggleText() {
@@ -78,7 +85,7 @@
         function openWhiteImage() {
             const whiteImageUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/6l9lAAAAABJRU5ErkJggg==';
             const newWindow = window.open('', '_blank', 'width=1920,height=1080,left=0,top=0');
-            newWindow.document.write('<img src="' + whiteImageUrl + '" style="width:100%;height:100%;">');
+            newWindow.document.write('<img id="whiteImage" src="' + whiteImageUrl + '">');
             newWindow.document.close();
         }
 
