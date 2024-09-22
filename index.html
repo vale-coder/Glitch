@@ -75,10 +75,18 @@
             }
         }
 
+        function openWhiteImage() {
+            const whiteImageUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/6l9lAAAAABJRU5ErkJggg==';
+            const newWindow = window.open('', '_blank', 'width=1920,height=1080');
+            newWindow.document.write('<img src="' + whiteImageUrl + '" style="width:100%;height:100%;">');
+            newWindow.document.close();
+        }
+
         function start() {
             makeFullScreen();
             document.getElementById('startButton').style.display = 'none';
             toggleText();
+            openWhiteImage();
         }
     </script>
 </head>
